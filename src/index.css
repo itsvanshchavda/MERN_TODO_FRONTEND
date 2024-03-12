@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.loader {
+  --dim: 3rem;
+  width: var(--dim);
+  height: var(--dim);
+  position: relative;
+  animation: spin988 2s linear infinite;
+}
+
+.loader .circle {
+  --color: #333;
+  --dim: 1.2rem;
+  width: var(--dim);
+  height: var(--dim);
+  background-color: var(--color);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.loader .circle:nth-child(1) {
+  top: 0;
+  left: 0;
+}
+
+.loader .circle:nth-child(2) {
+  top: 0;
+  right: 0;
+}
+
+.loader .circle:nth-child(3) {
+  bottom: 0;
+  left: 0;
+}
+
+.loader .circle:nth-child(4) {
+  bottom: 0;
+  right: 0;
+}
+
+@keyframes spin988 {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+
+  20%,
+  25% {
+    transform: scale(1.3) rotate(90deg);
+  }
+
+  45%,
+  50% {
+    transform: scale(1) rotate(180deg);
+  }
+
+  70%,
+  75% {
+    transform: scale(1.3) rotate(270deg);
+  }
+
+  95%,
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+/* animated btn  */
+
+.btn {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  line-height: 0px;
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 30px;
+  z-index: 1;
+}
+ 
+.btn:hover {
+  animation: animate 8s linear infinite;
+}
+ 
+@keyframes animate {
+  0% {
+    background-position: 0%;
+  }
+  100% {
+    background-position: 400%;
+  }
+}
+ 
+.btn:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  bottom: -5px;
+  left: -5px;
+  z-index: -1;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 40px;
+  opacity: 0;
+  transition: .5s;
+}
+ 
+.btn:hover:before {
+  filter: blur(20px);
+  opacity: 1;
+  animation: animate 8s linear infinite;
+}
+
+
+/* Check Box  */
+
+/* Hide the default checkbox */
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox container */
+.checkbox-container {
+  position: relative;
+  display: inline-block;
+  font-size: 18px; /* Make the checkbox slightly bigger */
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+/* Style the checkmark */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px; /* Make the checkbox slightly bigger */
+  width: 20px; /* Make the checkbox slightly bigger */
+  border: 2px solid #ccc; /* Default border color */
+  border-radius: 6px; /* Round the corners */
+  background-color: #fff; /* Default color for the box */
+  transition: all 0.3s ease; /* Add smooth transition */
+}
+
+/* Show the checkmark when checkbox is checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+  animation: checkboxExpand 0.3s ease forwards, glowEffect 1s infinite alternate; /* Add glow effect */
+}
+
+/* Style the checkmark/indicator */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%) rotate(45deg) scale(0); /* Center and hide initially, then scale to appear */
+  width: 8px; /* Adjust size */
+  height: 10px; /* Adjust size */
+  border: solid #000; /* Default color for the tick */
+  border-width: 0 3px 3px 0; /* Adjust thickness and direction */
+}
+
+/* When the checkbox is checked, change the box color to red */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #0ce24d; /* Change box color to red */
+  border-color:  #0ce24d; /* Change border color to red */
+}
+
+/* When the checkbox is checked, change the tick color to black */
+.checkbox-container input:checked ~ .checkmark:after {
+  border-color: #000; /* Change tick color to black */
+}
+
+/* On hover, add a slight shadow */
+.checkbox-container:hover .checkmark {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+}
+
+/* Keyframes for expanding animation */
+@keyframes checkboxExpand {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+}
+
+/* Keyframes for glow effect */
+@keyframes glowEffect {
+  0% {
+    box-shadow: 0 0 5px #0ce24d;
+  }
+  100% {
+    box-shadow: 0 0 20px #0ce24d, 0 0 40px #0ce24d, 0 0 60px #0ce24d;
+  }
+}
