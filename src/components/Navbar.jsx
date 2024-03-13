@@ -31,7 +31,6 @@ const Navbar = () => {
         } catch (err) {
             toast.error(err.response.data.message)
             setLoader(false);
-            console.log("Error")
             setIsAuthenticated(true);
         }
     };

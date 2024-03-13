@@ -11,7 +11,7 @@ const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { isAuthenticated, setIsAuthenticated , setLoader , loader } = useContext(AuthContext);
+    const { isAuthenticated, setIsAuthenticated, setLoader, loader } = useContext(AuthContext);
 
     const submitHandler = async (e) => {
         try {
@@ -33,7 +33,6 @@ const Register = () => {
 
         } catch (err) {
             toast.error(err.response.data.message)
-            console.log("Error")
             setIsAuthenticated(false);
             setLoader(false);
         }
@@ -48,97 +47,81 @@ const Register = () => {
 
     return (
         <div>
-            <div className="flex flex-col h-screen bg-gray-100">
-                <div className="grid place-items-center px-2 sm:my-auto">
-                    <div
-                        className="w-11 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 
-            px-6 py-10 sm:px-10 sm:py-6 
-            bg-white rounded-lg shadow-md lg:shadow-lg"
-                    >
-                        <h2 className="text-center font-semibold text-3xl lg:text-4xl text-gray-800">
-                            Register
-                        </h2>
+            <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+                <div className="sm:mx-auto sm:w-full sm:max-w-md">
+                    <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                        Register your account
+                    </h2>
+                    <p className="mt-2 text-center text-sm text-gray-600 max-w">
+                        Or&nbsp;
+                        <Link to='/login' className="font-medium text-blue-600 hover:text-blue-500">
+                            Login to your account
+                        </Link>
+                    </p>
+                </div>
 
-                        <form className="mt-10" onSubmit={submitHandler}>
-                            <label
+                <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+                    <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+                        <form className="space-y-6" onSubmit={submitHandler}>
 
-                                className="block text-xs  font-semibold text-gray-600 uppercase"
-                            >
-                                Name
-                            </label>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">
+                                    Name
+                                </label>
+                                <div className="mt-1">
+                                    <input value={name} onChange={(e) => setName(e.target.value)}  name="name" type="text" required
+                                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                        placeholder="Enter your email address" />
+                                </div>
+                            </div>
 
-                            <input
-                                value={name}
-                                type="text"
-                                onChange={(e) => setName(e.target.value)}
-                                placeholder="Name"
-                                className="block w-full py-3 px-1 mt-2  text-gray-800 appearance-none
-                    border-b-2 border-gray-100
-                    focus:text-gray-500 focus:outline-none focus:border-gray-200"
-                                required
-                            />
-                            <label
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">
+                                    Email address
+                                </label>
+                                <div className="mt-1">
+                                    <input value={email} onChange={(e) => setEmail(e.target.value)} id="email" name="email" type="email" required
+                                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                        placeholder="Enter your email address" />
+                                </div>
+                            </div>
 
-                                className=" mt-4 block text-xs font-semibold text-gray-600 uppercase"
-                            >
-                                E-mail
-                            </label>
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700">
+                                    Password
+                                </label>
+                                <div className="mt-1">
+                                    <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" autocomplete="current-password" required
+                                        className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                                        placeholder="Enter your password" />
+                                </div>
+                            </div>
 
-                            <input
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                placeholder="e-mail address"
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center">
+                                    <input id="remember_me" name="remember_me" type="checkbox"
+                                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+                                    <label for="remember_me" className="ml-2 block text-sm text-gray-900">
+                                        Remember me
+                                    </label>
+                                </div>
 
-                                className="block w-full py-3 px-1 mt-2 
-                        text-gray-800 appearance-none 
-                        border-b-2 border-gray-100
-                        focus:text-gray-500 focus:outline-none focus:border-gray-200"
-                                required
-                            />
+                                <div className="text-sm">
+                                    <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                                        Forgot your password?
+                                    </a>
+                                </div>
+                            </div>
 
-                            <label
+                            <div>
+                                <button type="submit" disabled={loader}
+                                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
-                                className="block mt-2 text-xs font-semibold text-gray-600 uppercase"
-                            >
-                                Password
-                            </label>
-                            <input
-
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                type="password"
-                                placeholder="password"
-                                className="block w-full py-3 px-1 mt-2 mb-4
-                    text-gray-800 appearance-none 
-                    border-b-2 border-gray-100
-                    focus:text-gray-500 focus:outline-none focus:border-gray-200"
-                                required
-                            />
-
-                            <button disabled={loader}
-                                type="submit"
-                                className="w-full py-3 mt-10 bg-gray-800 rounded-sm
-                    font-medium text-white uppercase
-                    focus:outline-none hover:bg-gray-700 hover:shadow-none"
-                            >
-                                Register
-                            </button>
-
-                            <p className="flex-1 text-gray-500 text-md text-center pb-1 pt-2 mx-4 my-1 sm:my-auto">
-                                or
-                            </p>
-
-                            <Link className="p-10 px-[11.7rem] font-semibold" to="/login">
-                                Login
-                            </Link>
-
-                            <div className="sm:flex sm:flex-wrap mt-8 sm:mb-4 text-sm text-center">
-                                {/* <a href="#" className="flex-2 underline">
-                        Forgot password?
-                    </a> */}
+                                    Register
+                                </button>
                             </div>
                         </form>
+
                     </div>
                 </div>
             </div>

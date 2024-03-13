@@ -29,7 +29,6 @@ const App = () => {
         });
       } catch (error) {
         setUser({})
-        console.log(error);
         setIsAuthenticated(false);
         setLoader(false);
       }
