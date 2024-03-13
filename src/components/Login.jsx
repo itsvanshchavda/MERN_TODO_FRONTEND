@@ -41,9 +41,9 @@ const Login = () => {
 
     };
 
+    const handleForgotPassword = () => {
 
-
-
+    };
 
     if (isAuthenticated) return <Navigate to="/" />
 
@@ -81,7 +81,7 @@ const Login = () => {
                                     Password
                                 </label>
                                 <div className="mt-1">
-                                    <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" autocomplete="current-password" required
+                                    <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" required
                                         className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                         placeholder="Enter your password" />
                                 </div>
@@ -91,15 +91,15 @@ const Login = () => {
                                 <div className="flex items-center">
                                     <input id="remember_me" name="remember_me" type="checkbox"
                                         className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-                                    <label for="remember_me" className="ml-2 block text-sm text-gray-900">
+                                    <label  className="ml-2 block text-sm text-gray-900">
                                         Remember me
                                     </label>
                                 </div>
 
                                 <div className="text-sm">
-                                    <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
+                                    <Link to='/forgotpassword' className="font-medium text-blue-600 hover:text-blue-500">
                                         Forgot your password?
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
 

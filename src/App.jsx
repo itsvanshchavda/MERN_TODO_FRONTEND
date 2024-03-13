@@ -9,6 +9,7 @@ import { Toaster } from 'react-hot-toast'
 import axios from 'axios'
 import { server } from '../server'
 import AuthContext from './context/AuthContext'
+import ForgotPass from './components/ForgotPass'
 
 
 
@@ -48,6 +49,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forgotpassword" element={<ForgotPass />} />
       </Routes>
       <Toaster />
     </Router>

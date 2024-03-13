@@ -91,13 +91,13 @@ const Register = () => {
                                     Password
                                 </label>
                                 <div className="mt-1">
-                                    <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" autocomplete="current-password" required
+                                    <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password"  required
                                         className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                         placeholder="Enter your password" />
                                 </div>
                             </div>
 
-                            <div className="flex items-center justify-between">
+                            {/* <div className="flex items-center justify-between">
                                 <div className="flex items-center">
                                     <input id="remember_me" name="remember_me" type="checkbox"
                                         className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
@@ -106,12 +106,7 @@ const Register = () => {
                                     </label>
                                 </div>
 
-                                <div className="text-sm">
-                                    <a href="#" className="font-medium text-blue-600 hover:text-blue-500">
-                                        Forgot your password?
-                                    </a>
-                                </div>
-                            </div>
+                            </div> */}
 
                             <div>
                                 <button type="submit" disabled={loader}
