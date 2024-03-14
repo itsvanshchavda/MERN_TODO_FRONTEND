@@ -4,8 +4,7 @@ import { server } from '../../server';
 import toast from 'react-hot-toast';
 import ShowTasks from './ShowTasks';
 import AuthContext from '../context/AuthContext';
-import { Navigate } from 'react-router-dom';
-import Loader from './Loader';
+
 
 
 
@@ -121,10 +120,6 @@ const Home = () => {
   useEffect(() => {
     fetchTasks();
   }, [refresh]);
-
-  {
-    isAuthenticated ? <Loader />:  <Navigate to='/login' />
-  }
 
 
 

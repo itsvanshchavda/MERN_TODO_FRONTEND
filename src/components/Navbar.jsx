@@ -42,8 +42,7 @@ const Navbar = () => {
     const toggleMobileMenu = () => {
         setShowMobileMenu(!showMobileMenu);
     };
-
-    if(!isAuthenticated) return <Navigate to='/login' />;
+    
 
     return (
         <div>

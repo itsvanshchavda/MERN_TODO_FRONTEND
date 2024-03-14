@@ -45,6 +45,8 @@ const Login = () => {
 
     if (isAuthenticated) return <Navigate to="/" />
 
+    
+
     return (
         <div>
             <div className="min-h-screen bg-gray-100 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -54,9 +56,11 @@ const Login = () => {
                     </h2>
                     <p className="mt-2 text-center text-sm text-gray-600 max-w">
                         Or&nbsp;
+
                         <Link to='/register' className="font-medium text-blue-600 hover:text-blue-500">
-                            create an account
+                            Register your account
                         </Link>
+
                     </p>
                 </div>
 
@@ -89,7 +93,7 @@ const Login = () => {
                                 <div className="flex items-center">
                                     <input id="remember_me" name="remember_me" type="checkbox"
                                         className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-                                    <label  className="ml-2 block text-sm text-gray-900">
+                                    <label className="ml-2 block text-sm text-gray-900">
                                         Remember me
                                     </label>
                                 </div>
@@ -105,7 +109,7 @@ const Login = () => {
                                 <button type="submit" disabled={loader}
                                     className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
 
-                                   Login
+                                    Login
                                 </button>
                             </div>
                         </form>

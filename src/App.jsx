@@ -10,6 +10,7 @@ import axios from 'axios'
 import { server } from '../server'
 import AuthContext from './context/AuthContext'
 import ForgotPass from './components/ForgotPass'
+import NotFound from './components/NotFound'
 
 
 
@@ -25,6 +26,7 @@ const App = () => {
           withCredentials: true,
         }).then((res) => {
           setUser(res.data.user);
+
           setIsAuthenticated(true);
           setLoader(false);
         });
@@ -50,6 +52,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgotpassword" element={<ForgotPass />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
     </Router>

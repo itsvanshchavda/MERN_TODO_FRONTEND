@@ -69,7 +69,7 @@ const Register = () => {
                                     Name
                                 </label>
                                 <div className="mt-1">
-                                    <input value={name} onChange={(e) => setName(e.target.value)}  name="name" type="text" required
+                                    <input value={name} onChange={(e) => setName(e.target.value)} name="name" type="text" required
                                         className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                         placeholder="Enter your email address" />
                                 </div>
@@ -91,7 +91,7 @@ const Register = () => {
                                     Password
                                 </label>
                                 <div className="mt-1">
-                                    <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password"  required
+                                    <input value={password} onChange={(e) => setPassword(e.target.value)} id="password" name="password" type="password" required
                                         className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                         placeholder="Enter your password" />
                                 </div>
