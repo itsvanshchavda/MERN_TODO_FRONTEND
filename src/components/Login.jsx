@@ -41,9 +41,7 @@ const Login = () => {
 
     };
 
-    const handleForgotPassword = () => {
 
-    };
 
     if (isAuthenticated) return <Navigate to="/" />
 

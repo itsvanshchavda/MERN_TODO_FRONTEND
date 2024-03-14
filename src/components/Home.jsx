@@ -145,7 +145,7 @@ const Home = () => {
       </form>
     </div>
 
-    <div className='max-sm:w-[750px] max-xl:w-[90em] max-xl:pr-[50%] max-2xl:w-[87rem] '>
+    <div className='max-sm:w-[700px] max-xl:w-[90em] max-xl:pr-[50%] max-2xl:w-[87rem] '>
       {tasks.map((item) => (
         <ShowTasks
           key={item._id}

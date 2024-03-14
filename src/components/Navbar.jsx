@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import AuthContext from '../context/AuthContext';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { server } from '../../server';
 import { FaBars } from "react-icons/fa6";
 import { IoMdClose } from "react-icons/io";
+
 
 
 
@@ -25,8 +26,10 @@ const Navbar = () => {
                     withCredentials: true
                 })
             toast.success("Logout Success!!");
-            setLoader(false);
+            
+            setLoader(false);   
             setIsAuthenticated(false);
+            setShowMobileMenu(false);
 
         } catch (err) {
             toast.error(err.response.data.message)
@@ -40,9 +43,11 @@ const Navbar = () => {
         setShowMobileMenu(!showMobileMenu);
     };
 
+    if(!isAuthenticated) return <Navigate to='/login' />;
+
     return (
         <div>
-            <nav className="p-4 bg-zinc-900 text-gray-200">
+            <nav className="p-4 bg-zinc-900 text-gray-200 ">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center pl-8">
                         <i className="text-2xl fas fa-campground"></i>
@@ -50,7 +55,7 @@ const Navbar = () => {
                     </div>
 
                     {/* MOBILE NAV ICON */}
-                    <div className="md:hidden block top-4 right-8 fixed">
+                    <div className="md:hidden block top-4 right-8 fixed max-sm:absolute max-sm:bottom-1">
                         <button
 
                             type="button"
@@ -65,7 +70,7 @@ const Navbar = () => {
                     </div>
 
                     {/* NAVIGATION - LARGE SCREENS */}
-                    <div className="hidden md:flex">
+                    <div className="hidden md:flex ">
                         <ul className="hidden md:flex">
                             <li className="text-lg pr-8 ">
                                 <Link to='/' className="transition duration-300 focus:outline-none focus:text-indigo-400 focus:underline  hover:text-indigo-400">
@@ -113,7 +118,7 @@ const Navbar = () => {
 
                 {/* MOBILE MENU */}
                 {showMobileMenu && (
-                    <div className="w-full mx-auto py-8 text-center">
+                    <div className="w-full mx-auto py-8 text-center ">
                         <div className="flex flex-col justify-center items-center w-full">
                             <ul className="">
                                 <li className="text-lg pr-8 ">
@@ -127,29 +132,28 @@ const Navbar = () => {
                                     </Link>
                                 </li>
                                 <li className="text-lg pr-8">
-                                    <Link to='/' href="#" className="transition duration-300 focus:outline-none focus:text-indigo-400 focus:underline    hover:text-indigo-400" onClick={toggleMobileMenu}>
+                                    <Link to='/' href="#" className="transition duration-300 focus:outline-none focus:text-indigo-400 focus:underline   hover:text-indigo-400" onClick={toggleMobileMenu}>
                                         Github
                                     </Link>
                                 </li>
 
-                               
+
 
 
 
                             </ul>
 
                             <div className='mt-5'>
-                            {isAuthenticated ? (
-                                    <button disabled={loader} onClick={logoutHandler} className='text-lg float-end bg-indigo-500 rounded-sm hover:bg-indigo-600 px-10 py-1 text-center '>Logout</button>
+                                {isAuthenticated ? (
+                                    <button disabled={loader} onClick={logoutHandler} className='text-lg float-end bg-indigo-500 rounded-sm hover:bg-indigo-600 px-10 py-1 text-center'>Logout</button>
                                 ) : (
-                                    <li>
-                                        <Link className='bg-indigo-500 rounded-sm hover:bg-indigo-600 px-10 py-1 text-center ' to='/login'>Login</Link>
-                                    </li>
+                                    <Link className='bg-indigo-500 rounded-sm hover:bg-indigo-600 px-10 py-1 text-center' to='/login' onClick={() => { toggleMobileMenu();}}>Login</Link>
                                 )}
                             </div>
 
+
                         </div>
-                        
+
                     </div>
                 )}
             </nav>
